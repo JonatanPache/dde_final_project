@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3004:3004"
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PORT=3306
+      - DB_PASSWORD=wserver
+      - DB_NAME=puzmage
+    depends_on:
+      - mysql
+    networks:
+      - puzmage_net
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "wserver"
+      MYSQL_DATABASE: "puzmage"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
+    networks:
+      - puzmage_net
+
+networks:
+  puzmage_net:
+    driver: bridge
+

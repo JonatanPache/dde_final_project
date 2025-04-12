@@ -8,3 +8,7 @@ Para construir el proyecto, favor correr el siguiente comando:
 docker-compose up --build -d
 ```
  
+# Requerimientos
+
+- MySQL 5.7
+- NodeJS

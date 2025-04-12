@@ -7,14 +7,16 @@ inputFile.addEventListener("change", function () {
     if (files.length > 0) {
         var type = files[0].type;
         if (type != "image/png" && type != "image/jpeg") {
-            alert("Seleccione solo imagenes");
+            alert("Seleccione solo imagenes PNG o JPEG");
             return;
         }
         var imgTag = document.getElementById("uploadedImg");
+
         const fileReader = new FileReader();
         fileReader.addEventListener("load", function () {
             var originalBase64 = this.result;
             imgTag.setAttribute("src", originalBase64);
+            imgTag.style.display = "block"; 
         });
         fileReader.readAsDataURL(files[0]);
         existeImagen = true;
@@ -58,7 +60,8 @@ async function uploadImg() {
         img_content: imgContent,
         usu_email: usuemail
     };
-    const url = "http://127.0.0.1:3004/uploadImg";
+    //const url = "http://127.0.0.1:3005/uploadImg";
+    const url = "http://127.0.0.1:3005/uploadImg";
     var response;
     try {
         response = await fetch(url, {
@@ -74,6 +77,7 @@ async function uploadImg() {
     }
     if (response.ok == true) {
         alert("Imagen guardada");
+        window.location.href = "/profile"; 
     } else {
         alert(response.msg);
     }

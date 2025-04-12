@@ -1,43 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUZ-IMAGE</title>
-    <%- include('../partials/head'); %>
-        <link rel="stylesheet" href="css/uploadImg.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUZ-IMAGE</title>
+  <%- include('../partials/head'); %>
+  <link rel="stylesheet" href="css/uploadImg.css">
 </head>
 
 <body>
-    <%- include('../partials/navbar'); %>
-    <div class="container mt-4">
-        <label for="" id="usu_email" style="color: white;" ><%= usu_email %></label>
-        <div class="cmUploadImg bg-light p-4 rounded-3 shadow-sm">
-            <h4 class="mb-4" ><i class="bi bi-images me-2"></i> Cargar Nueva Imagen</h4>
-            <div class="cmImgUploaded position-relative mb-4 text-center ">
-                <img src="" class="cmImg img-thumbnail"  alt="" id="uploadedImg" >
-                <button id="deleteImgBtn" class="btn btn-danger position-absolute top-0 end-0 m-1" style="display: none;">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
-            
-            <div class="mb-4">
-                <label for="inpFile" class="btn btn-primary px-4">
-                    <i class="bi bi-plus-circle me-2"></i>Selecionar Imagen
-                </label>
-                <input type="file" name="inpFile" id="inpFile" accept="image/png, image/jpg, image/jpeg" class="d-none">
-            </div>
-            <br/><br/>
-            <h5>Cargar: </h5>
-            <img src="" alt="" id="modifiedImg">
-            <button class="btn btn-primary" onclick="optimizarB64()">CARGAR IMAGEN</button>
-            <button style="display:none;" id="upImgBtn" class="btn btn-success" onclick="uploadImg()">SUBIR IMAGEN</button>
-        </div>
+  <%- include('../partials/navbar'); %>
+
+  <div class="container mt-4">
+    <label id="usu_email" class="bg-primary text-white px-3 py-1 rounded-2 fw-semibold"><%= usu_email %></label>
+
+    <div class="cmUploadImg bg-light p-4 rounded-3 shadow-sm mt-3">
+      <h4 class="mb-4 text-dark"><i class="bi bi-images me-2"></i> Cargar Nueva Imagen</h4>
+
+      <!-- Vista previa imagen subida -->
+      <div class="cmImgUploaded position-relative mb-4 text-center">
+        <img src="" id="uploadedImg" class="img-thumbnail shadow-sm" alt="Vista previa" style="display: none; max-height: 300px;">
+        <button id="deleteImgBtn" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2 rounded-circle" style="display: none;">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+
+      <!-- Input de archivo -->
+      <div class="mb-4 text-center">
+        <label for="inpFile" class="btn btn-outline-primary px-4 py-2">
+          <i class="bi bi-plus-circle me-2"></i> Seleccionar Imagen
+        </label>
+        <input type="file" name="inpFile" id="inpFile" accept="image/png, image/jpg, image/jpeg" class="d-none">
+      </div>
+
+      <!-- Vista previa optimizada -->
+      <div class="text-center mb-4">
+        <h5 class="text-secondary">Vista Previa Procesada:</h5>
+        <img src="" id="modifiedImg" class="border rounded shadow-sm" alt="Imagen optimizada" style="max-height: 250px;">
+      </div>
+
+      <!-- Botones -->
+      <div class="text-center">
+        <button class="btn btn-primary me-2 px-4" onclick="optimizarB64()">CARGAR IMAGEN</button>
+        <button id="upImgBtn" style="display: none;" class="btn btn-success px-4" onclick="uploadImg()">SUBIR IMAGEN</button>
+      </div>
     </div>
-    <script src="js/upImg.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+  </div>
+
+  <script src="js/upImg.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

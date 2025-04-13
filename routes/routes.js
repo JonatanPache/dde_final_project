@@ -79,14 +79,20 @@ router.post("/signup", urlencodedParser, async (req, res) => {
         usu_email: req.body.usu_email,
         usu_password: req.body.usu_password
     };
+    console.log(data);
     if (data.usu_password !== req.body.usu_password2) {
         return res.render("pages/signup", {
             msg_e: "Las constraseñas no coinciden"
         });
     }
     var response = await userObj.registrar_usu(data);
+    //console.log(response.ok);
     if (response.ok === true) {
-        return res.render("pages/signup", { msg_s: response.msg });
+        //return res.render("pages/signup", { msg_s: response.msg });
+        //window.location.href="/login";
+        //alert('Usuario registrado con exito !!')
+        //res.render("pages/signup", { msg_s: response.msg });
+        return res.redirect("/");
     } else {
         return res.render("pages/signup", { msg_e: response.msg });
     }

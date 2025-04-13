@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PUZMAGE</title>
-    <%- include('../partials/head'); %>
-    <link rel="stylesheet" href="css/playImg.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PUZMAGE</title>
+  <%- include('../partials/head'); %>
+  <link rel="stylesheet" href="css/playImg.css">
+  <!-- Asegúrate de tener Bootstrap cargado en tu head -->
 </head>
-<body>
-    <div class="container">
-        <% if (typeof img_id != "undefined") { %>
-            <label style="color: white;" for="" id="img_id"><%= img_id %></label>
-        <% } %>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/singlePlayer.png" class="card-img-top" alt="jugar solo img">
-                    <div class="card-body">
-                        <h5 class="card-title">JUGAR SOLO</h5>
-                        <p class="card-text">Resuelve el rompecabezas solo sin presion.. perfecto para practicar</p>
-                        <form action="/playSolo" method="post">
-                            <button class="btn btn-success" name="img_id" value="<%= img_id %>">JUGAR</button>
-                        </form>
-                    </div>
-                </div>
-                <br/><br/>
-            </div>
-            <div class="col-md-6">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/multiplayer.png" class="card-img-top" alt="multiplayer img">
-                    <div class="card-body">
-                        <h5 class="card-title">MULTIJUGADOR</h5>
-                        <p class="card-text">Crea una partida e invita a tus amigos con el nombre de la partida</p>
-                        <form action="/playMulti" method="post">
-                            <button name="img_id" value="<%= img_id %>" class="btn btn-primary">JUGAR</button>
-                        </form>
-                    </div>
-                </div>
-                <br/><br/>
-            </div>
+<body style="background-color: #121212; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+  
+  <div class="container text-center">
+    <% if (typeof img_id != "undefined") { %>
+      <label for="" id="img_id" class="text-light mb-4 d-block fs-4 fw-bold"><%= img_id %></label>
+    <% } %>
+
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4" style="background-color: #1f1f1f; color: white;">
+          <img src="images/singlePlayer.png" class="card-img-top p-3 rounded-4" alt="jugar solo img">
+          <div class="card-body">
+            <h5 class="card-title">JUGAR SOLO </h5>
+            <p class="card-text">Resuelve el rompecabezas solo sin presión... perfecto para practicar.</p>
+            <form action="/playSolo" method="post">
+              <button class="btn btn-success w-100" name="img_id" value="<%= img_id %>">JUGAR</button>
+            </form>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-lg rounded-4" style="background-color: #1f1f1f; color: white;">
+          <img src="images/multiplayer.png" class="card-img-top p-3 rounded-4" alt="multiplayer img">
+          <div class="card-body">
+            <h5 class="card-title">MULTIJUGADOR </h5>
+            <p class="card-text">Compite contra otros jugadores para ver quién resuelve más rápido.</p>
+            <form action="/playMulti" method="post">
+              <button class="btn btn-primary w-100" name="img_id" value="<%= img_id %>">JUGAR</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+    
+  </div>
+
 </body>
 </html>

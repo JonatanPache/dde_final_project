@@ -3,6 +3,8 @@ services:
     build: .
     ports:
       - "3004:3004"
+    volumes:
+      - .:/usr/src/app
     environment:
       - DB_HOST=mysql
       - DB_USER=root
@@ -16,6 +18,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    platform: linux/amd64
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "wserver"
@@ -30,4 +33,3 @@ services:
 networks:
   puzmage_net:
     driver: bridge
-

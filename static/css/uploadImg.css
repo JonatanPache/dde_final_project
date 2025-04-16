@@ -60,4 +60,13 @@ body {
 .btn-success:hover {
     background-color: #157347;
     border-color: #146c43;
+.cmImg{
+    max-height: 18rem;
+}
+
+body {
+    min-height: 100vh; /* Para que cubra toda la página */
+    background-image: url("../images/back9.png");
+        background-repeat: no-repeat;
+        background-size: cover;
 }

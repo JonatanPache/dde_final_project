@@ -1,14 +1,4 @@
-/*
-;
-create table users(
-    usu_id int auto_increment,
-    usu_email varchar(100) not null,
-    usu_password varchar(100) not null,
-    usu_estado int not null,
-    
-    primary key(usu_id)
-);
-*/
+
 const { response } = require('express');
 const pool = require('../db/db_helper');
 //comment to say hello
@@ -64,7 +54,9 @@ class Users {
             ok: true,
             id: dbResponse.insertId
         };
+        //console.log('12.3',response)
         return response;
+        //window.location.href = "/login"; 
     }
     async login_usu(data) {
         var response;

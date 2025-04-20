@@ -58,7 +58,7 @@ async function uploadImg() {
         img_content: imgContent,
         usu_email: usuemail
     };
-    const url = "http://127.0.0.1:3004/uploadImg";
+    const url = "http://48.216.243.186:3004/uploadImg";
     var response;
     try {
         response = await fetch(url, {

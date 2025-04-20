@@ -23,9 +23,10 @@
                 </div>
               </div>
             <div class="col-md-6">
-                <br/><h4 class="cmSectionTitle">Imágenes</h4>
+                <br/><h4 class="cmSectionTitle">Imágenes</h4> <br/>
                 <%if (typeof ok != "undefined" && ok) { %>
-                    <label for=""><%= uImages.length %></label>
+                  <h5 class="cmSectionTitleCantidad">  Cantidad de Imagenes: </h5>
+                    <label  class="badge bg-white text-dark fs-5" for=""><%= uImages.length %></label>
                     <% for (var i = 0; i < uImages.length; i++) { %>
                         <div class="cmImageCard mb-4">
                           <img src="<%= uImages[i].img_content %>" alt="imagen" class="img-fluid cmUserImage">

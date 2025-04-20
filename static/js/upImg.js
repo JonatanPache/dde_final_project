@@ -51,7 +51,7 @@ async function optimizarB64() {
 
 //UPLOAD IMG METHOD
 async function uploadImg() {
-    if (existeImagen === false) {
+    /*if (existeImagen === false) {
         alert("Seleccione una imagen primero");
         return;
     }
@@ -81,5 +81,54 @@ async function uploadImg() {
     } else {
         alert(response.msg);
     }
-    return;
+    return;*/
+    const fileInput = document.getElementById("inpFile");
+    const files = fileInput.files;
+
+    if (files.length === 0) {
+        alert("Seleccione una imagen primero");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("imagen", files[0]);
+
+    const response = await fetch("/upload", {
+        method: "POST",
+        body: formData
+    });
+
+    const result = await response.json();
+    if (result.ok) {
+        alert("Imagen subida con éxito");
+        window.location.href = "/profile";
+    } else {
+        alert("Error al subir: " + result.msg);
+    }
+}
+
+async function uploadImg2(){
+    const fileInput = document.getElementById("inpFile");
+    const files = fileInput.files;
+
+    if (files.length === 0) {
+        alert("Seleccione una imagen primero");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("imagen", files[0]);
+
+    const response = await fetch("/upload", {
+        method: "POST",
+        body: formData
+    });
+
+    const result = await response.json();
+    if (result.ok) {
+        alert("Imagen subida con éxito");
+        window.location.href = "/profile";
+    } else {
+        alert("Error al subir: " + result.msg);
+    }
 }

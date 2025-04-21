@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
 
 const multer = require('multer');
 const path = require('path');
@@ -14,7 +15,13 @@ const Salas = require("../models/salas_model");
 
 const storage = multer.diskStorage({
     destination: function (req , file ,cb ){
-        cb(null,path.join(__dirname , '..' , 'static' , 'images/game'));
+        const dir = path.join(__dirname , '..' , 'static' , 'images/game');
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir, { recursive: true });
+        }
+
+        cb(null, dir);
+        //cb(null,path.join(__dirname , '..' , 'static' , 'images/game'));
     },
     filename : function (req , file , cb) {
         const uniqueName = Date.now() + ' ' + file.originalname;

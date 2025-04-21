@@ -1,24 +1,25 @@
 body {
-    background-image: url("../images/bkg_home1.png");
+    /*background-image: url("../images/bkg_home1.png");*/
     background-repeat: no-repeat, repeat;
     background-size: cover;
 }
-.cmHeadline{
+
+.cmHeadline {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 2rem;
     color: white;
 }
 
-.cmCenteredContent{
+.cmCenteredContent {
     margin-top: 5rem;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0%);
-    width: 40%;
+    width: 100%;
     text-align: center;
 }
 
-.cmLoginBtn{
+.cmLoginBtn {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }

@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    background: url('/images/unirseBK.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .register-wrapper {
+    width: 100%;
+    max-width: 480px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .register-card {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  
+  .card-header {
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .card-header h4 {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .form-control {
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #0d6efd;
+    border: none;
+  }
+  
+  .btn-warning {
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  .text-danger,
+  .text-success {
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  /* ✅ Responsive en pantallas pequeñas */
+  @media (max-width: 576px) {
+    .register-wrapper {
+      padding: 2.5rem;
+      margin: 1rem;
+    }
+  
+    .card-header h4 {
+      font-size: 1.1rem;
+    }
+  
+    .btn-primary,
+    .form-control {
+      font-size: 0.95rem;
+    }
+  }
+  

@@ -41,7 +41,7 @@ class Salas {
             return;
         }
         if (!eImgid || !eUsuemail || !eSalcode || !eLevel) {
-            response = { ok: false, msg: "Asegurese de haber enviado todos los parametros en data" };
+            response = { ok: false, msg: "Asegurese de haber enviado todos los parametros." };
             return response;
         }
         this.sal_img = data.sal_img;
@@ -110,7 +110,7 @@ class Salas {
         }
         this.sal_code = data.sal_code;
         if (this.sal_code === "" || this.sal_code === null) {
-            response = { ok: false, msg: "Codigo de sala vacio o nulo" };
+            response = { ok: false, msg: "Codigo de sala equivocado!" };
             return response;
         }
         var sqlString = "SELECT * FROM salas WHERE sal_estado = 1 AND sal_code = '" + this.sal_code + "' ";
@@ -147,12 +147,12 @@ class Salas {
             return response;
         }
         if (!eCode) {
-            response = { ok: false, msg: "Debe enviar un codigo" };
+            response = { ok: false, msg: "Se debe enviar un codigo" };
             return response;
         }
         this.sal_code = data.sal_code;
         if (this.sal_code === null || this.sal_code === "") {
-            response = { ok: false, msg: "Codigo no puede ser vacio" };
+            response = { ok: false, msg: "El codigo no puede ser vacio" };
             return response;
         }
         var sqlString = "UPDATE salas SET sal_estado = 0 WHERE sal_code = '" + this.sal_code + "' ";

@@ -1,3 +1,81 @@
-.cmPerfilBox{
+.cmPerfilBox {
     height: 5rem;
 }
+
+/* Cambiamos aquí */
+body {
+    min-height: 100vh; /* Para que cubra toda la página */
+    background-image: url("../images/back9.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+.cmImageCard {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .cmImageCard:hover {
+    transform: scale(1.02);
+  }
+  
+  .cmUserImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cmSectionTitle {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: rgba(0, 123, 255, 0.8); /* azul con transparencia */
+    padding: 0.5rem 1.2rem;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+  }
+
+  .cmSectionTitleCantidad {
+    font-family: 'Arial';
+    font-size:medium;
+    font-weight: 300;
+    color: #000000;
+    background-color: rgba(242, 248, 255, 0.8); /* azul con transparencia */
+    padding: 0.5rem 1.2rem;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+  }
+
+  .cmPerfilBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2rem 1rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    height: 10%;
+    text-align: center;
+  }
+  
+  .cmPerfilIcon i {
+    font-size: 3rem;
+    color: #fff;
+  }
+  
+  .cmPerfilEmail {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+  }

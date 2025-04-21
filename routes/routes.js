@@ -1,12 +1,28 @@
 const express = require("express");
 const router = express.Router();
 
+const multer = require('multer');
+const path = require('path');
+
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const Users = require("../models/usuarios_model");
 const Images = require("../models/images_model");
 const Salas = require("../models/salas_model");
+
+
+const storage = multer.diskStorage({
+    destination: function (req , file ,cb ){
+        cb(null,path.join(__dirname , '..' , 'static' , 'images/game'));
+    },
+    filename : function (req , file , cb) {
+        const uniqueName = Date.now() + ' ' + file.originalname;
+        cb(null , uniqueName);
+    }
+});
+
+const upload = multer({storage});
 
 /* ======================================
 ================= PAGES =================
@@ -50,6 +66,30 @@ router.get("/profile", async (req, res) => {
     }
 });
 
+
+router.post('/upload', upload.single('imagen'),async (req, res) => {
+    if (!req.file) return res.status(400).json({ ok: false, msg: 'No se subió archivo' });
+
+    const usu_email = req.session.usu_email;
+    console.log("Usuario desde sesión:", usu_email);
+    if (!usu_email) return res.status(401).json({ ok: false, msg: 'Sesión no válida' });
+
+    const imageUrl = `/images/game/${req.file.filename}`;
+    
+    // Insertar en la base de datos
+    const imgObj = new Images();
+    const response = await imgObj.registrar_img({
+        img_content: imageUrl,
+        usu_email: usu_email
+    });
+
+    if (response.ok) {
+        res.json({ ok: true, msg: 'Imagen guardada', url: imageUrl });
+    } else {
+        res.status(500).json({ ok: false, msg: response.msg });
+    }
+});
+
 //UPLOAD IMG PAGE
 router.get("/uploadImg", (req, res) => {
     if (req.session.usu_email) {
@@ -79,14 +119,20 @@ router.post("/signup", urlencodedParser, async (req, res) => {
         usu_email: req.body.usu_email,
         usu_password: req.body.usu_password
     };
+    console.log(data);
     if (data.usu_password !== req.body.usu_password2) {
         return res.render("pages/signup", {
             msg_e: "Las constraseñas no coinciden"
         });
     }
     var response = await userObj.registrar_usu(data);
+    //console.log(response.ok);
     if (response.ok === true) {
-        return res.render("pages/signup", { msg_s: response.msg });
+        //return res.render("pages/signup", { msg_s: response.msg });
+        //window.location.href="/login";
+        //alert('Usuario registrado con exito !!')
+        //res.render("pages/signup", { msg_s: response.msg });
+        return res.redirect("/");
     } else {
         return res.render("pages/signup", { msg_e: response.msg });
     }
@@ -125,6 +171,7 @@ router.post("/uploadImg", async (req, res) => {
     var imgObj = new Images();
     var data;
     var response;
+    
     try {
         data = {
             img_content: req.body.img_content,

@@ -23,6 +23,7 @@ class Images{
         var eContent;
         var eUsuemail;
         var response;
+        console.log(eContent , eUsuemail , response);
         try{
             eContent = "img_content" in data;
             eUsuemail = "usu_email" in data;
@@ -53,7 +54,7 @@ class Images{
             return response;
         }
         if(imgnsUsu.result.length >= 5){
-            response = {ok: false, msg: "Usuario tiene muchas imagenes...elimine una para agregar una nueva"};
+            response = {ok: false, msg: "Memoria insuficiente ...elimine algunas archivos para tener mas espacio!!"};
             return response;
         }
 
@@ -106,7 +107,7 @@ class Images{
         }
         this.img_id = data.img_id;
         if(!eImgid || this.img_id === "" || this.img_id === null){
-            response = {ok:false, msg: "Imgagen id no puede ser vacio"};
+            response = {ok:false, msg: "La id de la imagen no puede ser vacio"};
             return response;
         }
         var sqlString = "UPDATE images SET img_estado = 0 WHERE img_id = " + this.img_id + " ";

@@ -1,8 +1,72 @@
-.cmUploadImg{
-    text-align: center;
-    margin: 4rem auto;
+/* Estética adicional sin tocar uploadImg.css */
+
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.email-label {
+    background-color: #0d6efd;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.text-title {
+    color: #343a40;
+}
+
+.text-subtitle {
+    color: #495057;
+}
+
+#uploadedImg,
+#modifiedImg {
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.btn-delete-img {
+    border-radius: 50%;
+    padding: 6px 9px;
+}
+
+.btn {
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.btn-success {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-success:hover {
+    background-color: #157347;
+    border-color: #146c43;
 .cmImg{
     max-height: 18rem;
+}
+
+body {
+    min-height: 100vh; /* Para que cubra toda la página */
+    background-image: url("../images/back9.png");
+        background-repeat: no-repeat;
+        background-size: cover;
 }

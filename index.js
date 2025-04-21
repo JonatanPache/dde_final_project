@@ -55,10 +55,10 @@ io.on("connection", (socket) => {
 //SESSION CONF
 console.log(process.env)
 var sessionOptions = {
-    host: process.env.DB_HOST ?? 'mysql', 
-    port: Number(process.env.DB_PORT) || 3306,
+    host: process.env.DB_HOST ?? 'localhost', 
+    port: Number(process.env.DB_PORT) || 3307,
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'wserver',
+    password: process.env.DB_PASSWORD || '1234567890',
     database: process.env.DB_NAME || 'puzmage'
 };
 var sessionStore = new mysqlStore(sessionOptions);
@@ -83,6 +83,9 @@ const router = require("./routes/routes");
 //const req = require("express/lib/request");
 //const exp = require("constants");
 app.use(router);
+
+require("./jobs/ImageCleanOld")
+require("./jobs/TestJob")
 
 app.use(express.static(path.join(__dirname, 'static')));
 const port = 3004;

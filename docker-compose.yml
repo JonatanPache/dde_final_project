@@ -6,6 +6,7 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+      -./static:/usr/src/app/static
 
     environment:
       - DB_HOST=mysql

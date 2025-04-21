@@ -2,8 +2,8 @@ const cron = require("node-cron");
 const { exec } = require("child_process");
 const pool = require("../db/db_helper");
 
-//cron.schedule("0 2 * * *", () => {
-cron.schedule("*/2 * * * *", () => {
+//cron.schedule("* */2 * * *", () => {
+cron.schedule("0 2 * * *", () => {
     console.log("[JOB] Ejecutando pruebas unitarias...");
   
     exec("npm test", (error, stdout, stderr) => {

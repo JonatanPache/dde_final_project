@@ -28,16 +28,45 @@
 }
 
 
+body {
+    background: linear-gradient(to right, #f1f1f1, #e6e9f0);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 1rem;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.puzzleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 /*PUZZLE CLASSES*/
 
-.gridContainer{
+/*.gridContainer{
     border-style: solid;
     margin: auto;
+}*/
+
+.gridContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #444;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 }
 
 .gridContainer > div{
     width: 100%;
 }
+
+
 
 .fila{
     display: flex;

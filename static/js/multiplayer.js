@@ -255,7 +255,8 @@ function createPieces() {
         for (var j = 0; j < MAGNITUD; j++) {
             iW = j * (-w);
             var divP = document.createElement("div");
-            divP.setAttribute("id", "p" + String(i) + String(j));
+            //divP.setAttribute("id", "p" + String(i) + String(j));
+            divP.setAttribute("id", "p" + playerData.usu_id + "_" + String(i) + String(j));
             divP.style.display = "inline-block";
             divP.style.height = String(h) + "px";
             divP.style.width = String(w) + "px";

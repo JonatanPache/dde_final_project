@@ -23,7 +23,7 @@ class Images{
         var eContent;
         var eUsuemail;
         var response;
-        console.log(eContent , eUsuemail , response);
+        //console.log(eContent , eUsuemail , response);
         try{
             eContent = "img_content" in data;
             eUsuemail = "usu_email" in data;

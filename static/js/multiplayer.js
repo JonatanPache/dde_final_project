@@ -139,6 +139,7 @@ function checkStartGame() {
 
 async function closeMatch() {
     const url = "http://48.216.243.186:3004/matchStarted";
+    //const url = "http://127.0.0.1:3004/matchStarted";
     var response;
     var data = { sal_code: playerData.sal_code };
     try {
@@ -159,10 +160,12 @@ async function closeMatch() {
 }
 
 function piezaFit(data) {
+
     var col = data.pieza.substring(2);
     var row = data.pieza.substring(1, 2);
     var iW = -1 * (W / MAGNITUD) * (parseInt(col));
     var iH = -1 * (H / MAGNITUD) * (parseInt(row));
+    
     var casilla = document.getElementById("c" + data.pieza.substring(1));
     casilla.style.backgroundImage = "url(" + b64Str + ")";
     casilla.style.backgroundPosition = String(iW) + "px " + String(iH) + "px";
@@ -177,6 +180,32 @@ function piezaFit(data) {
     }
     sumarPunto(data);
     checkGameOver();
+    /*const pos = data.pieza.split("_")[1];
+    const row = pos[0];
+    const col = pos[1];
+
+    const iW = -1 * (W / MAGNITUD) * parseInt(col);
+    const iH = -1 * (H / MAGNITUD) * parseInt(row);
+
+    const casilla = document.getElementById("c" + pos);
+    if (casilla) {
+        casilla.style.backgroundImage = "url(" + b64Str + ")";
+        casilla.style.backgroundPosition = `${iW}px ${iH}px`;
+    }
+
+    const piezaColocada = document.getElementById(data.pieza);
+    if (piezaColocada) piezaColocada.remove();
+
+    for (let i = 0; i < pieces.length; i++) {
+        if (pieces[i].id === data.pieza) {
+            pieces.splice(i, 1);
+            break;
+        }
+    }
+
+    sumarPunto(data);
+    checkGameOver();*/
+  
 }
 
 function sumarPunto(data) {
@@ -255,8 +284,9 @@ function createPieces() {
         for (var j = 0; j < MAGNITUD; j++) {
             iW = j * (-w);
             var divP = document.createElement("div");
-            //divP.setAttribute("id", "p" + String(i) + String(j));
-            divP.setAttribute("id", "p" + playerData.usu_id + "_" + String(i) + String(j));
+            divP.setAttribute("id", "p" + String(i) + String(j));
+            //divP.setAttribute("id", "p" + playerData.usu_id + "_" + String(i) + String(j));
+            //divP.setAttribute("id", "p" + playerData.usu_id + "_" + String(i) + String(j));
             divP.style.display = "inline-block";
             divP.style.height = String(h) + "px";
             divP.style.width = String(w) + "px";
